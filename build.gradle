@@ -1,0 +1,52 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version '1.17.3'
+}
+
+group 'com.cardosofgui'
+version '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src']
+        }
+        resources {
+            srcDirs = ['resources']
+        }
+    }
+}
+
+intellij {
+    version = '2023.3'
+    type = 'IC'
+    plugins = ['com.intellij.java']
+}
+
+dependencies {
+    implementation 'com.intellij:forms_rt:7.0.3'
+}
+
+tasks {
+    patchPluginXml {
+        sinceBuild.set('233')
+        untilBuild.set('999.*')
+        changeNotes.set("""
+            <em>1.0.0 Initial release with Santa Claus animated progress bar</em><br>
+        """)
+    }
+
+    buildSearchableOptions {
+        enabled = false
+    }
+
+    compileJava {
+        sourceCompatibility = '17'
+        targetCompatibility = '17'
+    }
+}
+
