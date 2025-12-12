@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'com.cardosofgui'
-version '1.0.0'
+version '1.1.0'
 
 repositories {
     mavenCentral()
@@ -34,8 +34,9 @@ dependencies {
 tasks {
     patchPluginXml {
         sinceBuild.set('233')
-        untilBuild.set('999.*')
+        untilBuild.set('')
         changeNotes.set("""
+            <em>1.1.0 Updated progress bar gradient</em><br>
             <em>1.0.0 Initial release with Santa Claus animated progress bar</em><br>
         """)
     }

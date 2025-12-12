@@ -1,14 +1,16 @@
 <idea-plugin>
   <id>com.cardosofgui.santaclausprogress</id>
   <name>Santa Claus ProgressBar</name>
-  <version>1.0.0</version>
-  <idea-version since-build="233" until-build="999.*" />
+  <version>1.1.0</version>
+  <idea-version since-build="233" />
   <vendor email="cardosofgui@example.com">cardosofgui</vendor>
   <description><![CDATA[A festive progress bar with animated Santa Claus for IntelliJ IDEA and other JetBrains IDEs.]]></description>
-  <change-notes><![CDATA[<em>1.0.0 Initial release with Santa Claus animated progress bar</em><br>]]></change-notes>
+  <change-notes><![CDATA[<em>1.1.0 Updated progress bar gradient</em><br>
+            <em>1.0.0 Initial release with Santa Claus animated progress bar</em><br>]]></change-notes>
   <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
        on how to target different products -->
   <depends>com.intellij.modules.platform</depends>
+  <depends optional="true">com.intellij.modules.androidstudio</depends>
   <extensions defaultExtensionNs="com.intellij">
     <!-- Add your extensions here -->
   </extensions>

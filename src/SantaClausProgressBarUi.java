@@ -19,34 +19,10 @@ public class SantaClausProgressBarUi extends BasicProgressBarUI {
     private static final float ONE_OVER_SEVEN = 1f / 7;
     private static TexturePaint backgroundTexture = null;
     
-    private static TexturePaint getBackgroundTexture(int barHeight) {
-        if (backgroundTexture == null) {
-            try {
-                Image backgroundImage = new ImageIcon(SantaClausProgressBarUi.class.getResource("/background.jpeg")).getImage();
-                int originalWidth = backgroundImage.getWidth(null);
-                int originalHeight = backgroundImage.getHeight(null);
-                
-                int targetHeight = Math.max(barHeight, JBUI.scale(20));
-                double scale = (double) targetHeight / originalHeight;
-                int targetWidth = (int) (originalWidth * scale);
-                
-                BufferedImage bufferedImage = new BufferedImage(
-                    targetWidth, 
-                    targetHeight, 
-                    BufferedImage.TYPE_INT_RGB
-                );
-                Graphics2D g = bufferedImage.createGraphics();
-                g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-                g.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-                g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-                g.drawImage(backgroundImage, 0, 0, targetWidth, targetHeight, null);
-                g.dispose();
-                backgroundTexture = new TexturePaint(bufferedImage, new Rectangle2D.Float(0, 0, targetWidth, targetHeight));
-            } catch (Exception e) {
-                return null;
-            }
-        }
-        return backgroundTexture;
+    private static Paint getCandyCaneGradient(int width, int height) {
+        return new LinearGradientPaint(0, JBUI.scale(2), 0, height - JBUI.scale(6),
+                new float[]{0f, 0.5f, 1f},
+                new Color[]{new Color(0x7A1F1A), new Color(0xA12823), new Color(0xC8322C)});
     }
 
 
@@ -102,12 +78,7 @@ public class SantaClausProgressBarUi extends BasicProgressBarUI {
         int h = c.getPreferredSize().height;
         if (!isEven(c.getHeight() - h)) h++;
 
-        Paint backgroundPaint = getBackgroundTexture(h);
-        if (backgroundPaint == null) {
-            backgroundPaint = new LinearGradientPaint(0, JBUI.scale(2), 0, h - JBUI.scale(6),
-                    new float[]{0f, 0.5f, 1f},
-                    new Color[]{new Color(0x7A1F1A), new Color(0xA12823), new Color(0xC8322C)});
-        }
+        Paint backgroundPaint = getCandyCaneGradient(w, h);
         g.setPaint(backgroundPaint);
 
         if (c.isOpaque()) {
@@ -124,12 +95,7 @@ public class SantaClausProgressBarUi extends BasicProgressBarUI {
 //                new Color[]{Color.RED, Color.ORANGE, Color.YELLOW, Color.GREEN, Color.cyan, Color.blue, VIOLET});
 
         Paint old = g.getPaint();
-        Paint bgPaint = getBackgroundTexture(h);
-        if (bgPaint == null) {
-            bgPaint = new LinearGradientPaint(0, JBUI.scale(2), 0, h - JBUI.scale(6),
-                    new float[]{0f, 0.5f, 1f},
-                    new Color[]{new Color(0x7A1F1A), new Color(0xA12823), new Color(0xC8322C)});
-        }
+        Paint bgPaint = getCandyCaneGradient(w, h);
         g.setPaint(bgPaint);
 
         final float R = JBUI.scale(8f);
@@ -251,12 +217,7 @@ public class SantaClausProgressBarUi extends BasicProgressBarUI {
         g2.setColor(background);
         g2.fill(new RoundRectangle2D.Float(off, off, w - 2f*off - off, h - 2f*off - off, R, R));
 //        g2.setColor(progressBar.getForeground());
-        Paint bgPaint = getBackgroundTexture(h);
-        if (bgPaint == null) {
-            bgPaint = new LinearGradientPaint(0, JBUI.scale(2), 0, h - JBUI.scale(6),
-                    new float[]{0f, 0.5f, 1f},
-                    new Color[]{new Color(0x7A1F1A), new Color(0xA12823), new Color(0xC8322C)});
-        }
+        Paint bgPaint = getCandyCaneGradient(w, h);
         g2.setPaint(bgPaint);
 
         paintScaledIcon(g2, SantaClausIcons.SANTA_ICON, amountFull + JBUI.scale(2), 0, h, false);
