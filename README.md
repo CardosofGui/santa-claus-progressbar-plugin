@@ -89,12 +89,6 @@ cd santa-claus-progressbar-plugin
 
 **cardosofgui**
 
-- Email: cardosofgui@example.com
-
-## 📄 License
-
-This project is licensed under the terms specified in the LICENSE file (if applicable).
-
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](../../issues).
