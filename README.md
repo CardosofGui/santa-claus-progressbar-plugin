@@ -8,9 +8,7 @@ A festive and animated progress bar plugin for IntelliJ IDEA, Android Studio, an
 
 Watch the plugin in action:
 
-https://github.com/user-attachments/assets/example.mov
-
-<video src="example.mov" width="800" controls>
+<video src="https://github.com/user-attachments/assets/33f68573-7d25-4127-87bf-de999168116b" width="800" controls>
   Your browser does not support the video tag. [Download the video](example.mov) instead.
 </video>
 
@@ -63,7 +61,7 @@ The plugin replaces the default progress bar UI with a custom implementation tha
 ```bash
 # Clone the repository
 git clone <repository-url>
-cd NyanProgressBar-master
+cd santa-claus-progressbar-plugin
 
 # Build the plugin
 ./gradlew buildPlugin
